@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.sql.*;
 public class Main {
     public static void main(String[] args)
     {
@@ -23,7 +24,7 @@ public class Main {
                     m.addStudent(sc);
                     break;
                 case 2:
-                    System.out.println("Display Students");
+                    m.displayStudents();
                     break;
                 case 3:
                     System.out.println("Search Student");
@@ -59,14 +60,52 @@ public class Main {
         System.out.print("Enter Student Email: ");
         String email = sc.nextLine();
 
-        Student s = new Student(id, name, age, course, email);
+        try{
+            Connection con=DBC.getConnection();
+            String sql="INSERT INTO STUDENTS VALUES(?,?,?,?,?)";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setInt(3, age);
+            ps.setString(4, course);
+            ps.setString(5, email);
+            int rows= ps.executeUpdate();
+            if (rows>0) 
+            {
+                System.out.println("Student added successfully!");
+            }  
+            else 
+            {
+                System.out.println("Failed to add student.");
+            } 
+        }
+         catch (SQLException e)
+        {
+            System.out.println(e);
+            
+        }
+    }
+    public void displayStudents()
+    {
+        try{
+            Connection con=DBC.getConnection();
+            String sql="SELECT * FROM STUDENTS";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) 
+            {
+                System.out.println("Student details:");
+                System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("Name: " + rs.getString("name"));
+                System.out.println("Age: " + rs.getInt("age"));
+                System.out.println("Course: " + rs.getString("course"));
+                System.out.println("Email: " + rs.getString("email"));
 
-        System.out.println("Student added successfully!");
-        System.out.println("ID: " + s.getId());
-        System.out.println("Name: " + s.getName());
-        System.out.println("Age: " + s.getAge());
-        System.out.println("Course: " + s.getCourse());
-        System.out.println("Email: " + s.getEmail());
-
+            }  
+        }
+         catch (SQLException e)
+        {
+            System.out.println(e);
+        }
     }
 }
