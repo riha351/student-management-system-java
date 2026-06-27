@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
-        Studentsql m = new Studentsql();
+        Studentsql s = new Studentsql();
         while(true)
         {
             System.out.println("MENU");
@@ -21,19 +21,19 @@ public class Main {
             switch(ch)
             {
                 case 1:
-                    m.addStudent(sc);
+                    s.addStudent(sc);
                     break;
                 case 2:
-                    m.displayStudents();
+                    s.displayStudents();
                     break;
                 case 3:
-                    m.searchStudent(sc);
+                    s.searchStudent(sc);
                     break;
                 case 4:
-                    m.updateStudent(sc);
+                    s.updateStudent(sc);
                     break;
                 case 5:
-                    m.deleteStudent(sc);
+                    s.deleteStudent(sc);
                     break;
                 case 6:
                     System.out.println("Exiting");
