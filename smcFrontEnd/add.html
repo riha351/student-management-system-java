@@ -2,26 +2,65 @@
 <html>
 <head>
     <title>Add Student</title>
+    <link rel="stylesheet" href="addstyle.css">
 </head>
 <body>
-    <h1>Add Student</h1>
-    <form action="add" method="post">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required>
-        <br><br>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br><br>
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
-        <br><br>
-        <label for="course">Course:</label>
-        <input type="text" id="course" name="course" required>
-        <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
-        <button type="submit">Add Student</button>
-    </form>
+
+<header>
+    <h1>Student Management System</h1>
+</header>
+
+<div class="container">
+
+    <nav class="sidebar">
+        <a href="index.html">Dashboard</a>
+        <a href="add.html">Add Student</a>
+        <a href="view.html">View Students</a>
+        <a href="search.html">Search Student</a>
+        <a href="update.html">Update Student</a>
+        <a href="delete.html">Delete Student</a>
+    </nav>
+
+    <main>
+        <center>
+        <div class="form-card">
+
+            <h2>Add Student</h2>
+            
+            <form>
+                
+
+                <label>Student ID:</label>
+                <input type="number" name="number">
+                <br><br>
+
+                <label>Name:</label>
+                <input type="text" name="name">
+                <br><br>
+
+                <label>Age:</label>
+                <input type="number" name="age">
+                <br><br>
+
+                <label>Course:</label>
+                <input type="text" name="course">
+                <br><br>
+
+                <label>Email:</label>
+                <input type="email" name="email">
+                <br><br>
+
+                <button type="submit">Add Student</button>
+            
+            </form>
+           
+
+        </div>
+
+    </main>
+
+</div>
+ </center>
+
 </body>
 </html>
